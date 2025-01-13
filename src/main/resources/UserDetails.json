@@ -1,7 +1,20 @@
-{
-
+[
+  {
     "id": 100,
-    "name": "John",
+    "userName": "John",
     "address": "New York",
-    "active" : "true"
-}
+    "active": "true"
+  },
+  {
+    "id": 101,
+    "userName": "Ariel",
+    "address": "New Jersey",
+    "active": "true"
+  },
+  {
+    "id": 102,
+    "userName": "Marcina",
+    "address": "North Carolina",
+    "active": "true"
+  }
+]
