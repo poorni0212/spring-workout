@@ -1,14 +1,54 @@
 package com.learn.spring.demo.response;
 
-import org.springframework.stereotype.Component;
 
-@Component
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 public class UserDetails {
 
     private int id;
-    private String userName;
-    private String userAddress;
-    private boolean isActive;
+    @JsonProperty("userName")
+    private String name;
+    private String address;
+    private boolean active;
+    private Map<String, Object> details = new LinkedHashMap<>();
+
+    @JsonAnySetter
+    void setDetail(String key, Object value) {
+        details.put(key, value);
+    }
+
+
+    public Map<String, Object> getDetails() {
+        return details;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
 
     public int getId() {
         return id;
@@ -16,30 +56,6 @@ public class UserDetails {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getUserAddress() {
-        return userAddress;
-    }
-
-    public void setUserAddress(String userAddress) {
-        this.userAddress = userAddress;
-    }
-
-    public boolean isActive() {
-        return isActive;
-    }
-
-    public void setActive(boolean active) {
-        isActive = active;
     }
 
 }
