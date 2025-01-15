@@ -40,13 +40,13 @@ public class UserDetailServiceImpl implements IUserDetailService {
                     setJsonNodes(objectMapper, resource, arrayObject, userDetailsObj, userDetailsObj.isActive());
                 }
             } catch (IOException e) {
-                e.printStackTrace();
+                throw new RuntimeException("Error while updating user details");
             }
 
         });
 
 
-        return "updated";
+        return "User Activated/Deactivated Successfully";
     }
 
     private void setJsonNodes(ObjectMapper objectMapper, ClassPathResource resource, ArrayNode arrayObject, UserDetails userDetailsObj, boolean isActive) throws IOException {

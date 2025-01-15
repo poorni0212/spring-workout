@@ -23,24 +23,13 @@ public class DemoController {
     }
 
     @GetMapping("/users")
-    public ArrayList<UserDetails> users() {
-        ArrayList<UserDetails>  userDetailsList = new ArrayList<UserDetails>();
-        try {
-            userDetailsList = userDetailsService.users();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return userDetailsList;
+    public ArrayList<UserDetails> users() throws IOException {
+        return userDetailsService.users();
     }
 
-    @GetMapping("/users/{id}/{isActive}")
-    public String updateUserDetails(@PathVariable("id") int id,@PathVariable("isActive") boolean isActive) {
-        try {
-            String response = userDetailsService.activateOrDeactivateUser(id,isActive);
-            return response;
-        } catch (Exception e) {
-            return e.toString();
-        }
+    @PostMapping("/users/{id}/{isActive}")
+    public String updateUserDetails(@PathVariable("id") int id,@PathVariable("isActive") boolean isActive) throws IOException {
+        return userDetailsService.activateOrDeactivateUser(id,isActive);
     }
 
 }
