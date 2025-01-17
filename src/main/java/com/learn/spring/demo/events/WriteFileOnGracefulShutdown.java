@@ -2,6 +2,7 @@ package com.learn.spring.demo.events;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.learn.spring.demo.Service.UserDetailServiceImpl;
+import com.learn.spring.demo.response.UserDetails;
 import com.learn.spring.demo.util.UserDetailUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -24,7 +25,7 @@ public class WriteFileOnGracefulShutdown implements ApplicationListener<ContextC
         System.out.println("Graceful termination");
         try (FileWriter file = new FileWriter(UserDetailUtil.getJsonFile())) {
             ObjectMapper mapper = new ObjectMapper();
-            List<String> userDetailList = new ArrayList(userDetailServiceImpl.getUserDetailMap().values());
+            List<UserDetails> userDetailList = new ArrayList<>(userDetailServiceImpl.getUserDetailMap().values());
             mapper.writeValue(file,userDetailList );
         } catch (IOException e) {
             e.printStackTrace();

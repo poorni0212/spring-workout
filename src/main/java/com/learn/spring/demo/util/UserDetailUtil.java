@@ -24,9 +24,8 @@ public class UserDetailUtil {
     }
 
     public static List<UserDetails> getUserDetails(ObjectMapper objectMapper) throws IOException {
-        List<UserDetails> userDetailsList = objectMapper.readValue(UserDetailUtil.getJsonFile(), new TypeReference<List<UserDetails>>() {
+        return objectMapper.readValue(UserDetailUtil.getJsonFile(), new TypeReference<>() {
         });
-        return userDetailsList;
     }
 
 }
